@@ -192,7 +192,7 @@ public class NitfPreStoragePlugin implements PreCreateStoragePlugin, PreUpdateSt
                     contentItems.add(originalImageContentItem);
                 }
             }
-        } catch (IOException | ParseException | NitfFormatException | UnsupportedOperationException e) {
+        } catch (IOException | ParseException | NitfFormatException | RuntimeException e) {
             LOGGER.debug(e.getMessage(), e);
         }
     }
@@ -203,7 +203,7 @@ public class NitfPreStoragePlugin implements PreCreateStoragePlugin, PreUpdateSt
         final ThreadLocal<BufferedImage> bufferedImage = new ThreadLocal<>();
 
         if (contentItem != null && contentItem.getInputStream() != null) {
-            NitfRenderer renderer = new NitfRenderer();
+            NitfRenderer renderer = getNitfRenderer();
 
             new NitfParserInputFlow().inputStream(contentItem.getInputStream()).allData()
                     .forEachImageSegment(segment -> {
@@ -336,5 +336,9 @@ public class NitfPreStoragePlugin implements PreCreateStoragePlugin, PreUpdateSt
 
     public void setStoreOriginalImage(boolean storeOriginalImage) {
         this.storeOriginalImage = storeOriginalImage;
+    }
+
+    NitfRenderer getNitfRenderer() {
+        return new NitfRenderer();
     }
 }

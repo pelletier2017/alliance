@@ -82,6 +82,14 @@
             <version>${jpeg2000.version}</version>
         </dependency>
 
+        <dependency>
+            <!-- Upgrade mockito to version 2.1.0 for this module to get final mock capability -->
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
         <!--Spock dependencies-->
         <dependency>
             <groupId>ddf.lib</groupId>

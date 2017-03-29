@@ -1,10 +1,10 @@
 /**
  * Copyright (c) Codice Foundation
- * <p/>
+ * <p>
  * This is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser
  * General Public License as published by the Free Software Foundation, either version 3 of the
  * License, or any later version.
- * <p/>
+ * <p>
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details. A copy of the GNU Lesser General Public License
@@ -18,6 +18,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -30,6 +31,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codice.imaging.nitf.core.image.ImageSegment;
+import org.codice.imaging.nitf.render.NitfRenderer;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -65,7 +68,7 @@ public class PreStoragePluginTest {
     public void setUp()
             throws UnsupportedQueryException, SourceUnavailableException, FederationException,
             IOException {
-        nitfPreStoragePlugin = new NitfPreStoragePlugin();
+        this.nitfPreStoragePlugin = new NitfPreStoragePlugin();
 
         this.createStorageRequest = mock(CreateStorageRequest.class);
         this.updateStorageRequest = mock(UpdateStorageRequest.class);
@@ -81,7 +84,23 @@ public class PreStoragePluginTest {
         when(contentItem.getId()).thenReturn("101ABC");
         when(contentItem.getInputStream()).thenReturn(getInputStream(GEO_NITF));
         when(contentItem.getMimeTypeRawData()).thenReturn(NitfPreStoragePlugin.NITF_MIME_TYPE.toString());
-        when(contentItem.getSize()).thenReturn(5L*1024L*1024L);
+        when(contentItem.getSize()).thenReturn(5L * 1024L * 1024L);
+    }
+
+    @Test
+    public void testRunTimeException() throws IOException, PluginExecutionException {
+        NitfRenderer nitfRenderer = mock(NitfRenderer.class);
+
+        NitfPreStoragePlugin nitfPreStoragePlugin = new NitfPreStoragePlugin() {
+            @Override
+            NitfRenderer getNitfRenderer() {
+                return nitfRenderer;
+            }
+        };
+
+        when(nitfRenderer.render(any(ImageSegment.class))).thenThrow(RuntimeException.class);
+        CreateStorageRequest result = nitfPreStoragePlugin.process(createStorageRequest);
+        assertThat(result.getContentItems(), is(createStorageRequest.getContentItems()));
     }
 
     @Test(expected = PluginExecutionException.class)
