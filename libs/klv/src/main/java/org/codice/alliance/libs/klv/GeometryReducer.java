@@ -24,6 +24,10 @@ public class GeometryReducer implements GeometryOperator {
 
     @Override
     public Geometry apply(Geometry geometry) {
+        if(geometry == null || geometry.isEmpty()) {
+            return geometry;
+        }
+
         return geometryPrecisionReducer.reduce(geometry);
     }
 

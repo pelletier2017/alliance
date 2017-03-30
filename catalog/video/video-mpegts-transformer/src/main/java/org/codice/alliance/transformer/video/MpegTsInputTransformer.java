@@ -179,8 +179,6 @@ public class MpegTsInputTransformer implements InputTransformer {
     public Metacard transform(InputStream inputStream, final String id)
             throws IOException, CatalogTransformerException {
 
-        LOGGER.debug("processing video input for id = {}", id);
-
         try (TemporaryFileBackedOutputStream fileBackedOutputStream = new TemporaryFileBackedOutputStream()) {
 
             populateFileBackedOutputStream(inputStream, fileBackedOutputStream);

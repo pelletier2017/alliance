@@ -24,9 +24,13 @@ import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
+
+
 
 public class SimplifyGeometryFunctionTest {
 
@@ -36,6 +40,8 @@ public class SimplifyGeometryFunctionTest {
     private SimplifyGeometryFunction simplifyGeometryFunction;
 
     private WKTReader wktReader;
+
+    private static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory();
 
     @Before
     public void setup() {
@@ -66,6 +72,23 @@ public class SimplifyGeometryFunctionTest {
     public void testApplyNullArg() {
         Geometry result = simplifyGeometryFunction.apply(null);
         assertThat(result, nullValue());
+    }
+
+    @Test
+    public void testEmptryLineString() {
+        final Geometry emptyGeo = GEOMETRY_FACTORY.createLineString((Coordinate[]) null);
+
+        Geometry result = simplifyGeometryFunction.apply(emptyGeo);
+
+        assertThat(result, is(emptyGeo));
+    }
+
+    @Test
+    public void testEmptyPolygon() {
+        final Geometry emptyGeo = GEOMETRY_FACTORY.createMultiPolygon(null);
+        Geometry result = simplifyGeometryFunction.apply(emptyGeo);
+
+        assertThat(result, is(emptyGeo));
     }
 
     @Test

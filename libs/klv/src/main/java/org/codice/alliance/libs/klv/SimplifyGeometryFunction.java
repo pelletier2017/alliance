@@ -45,11 +45,14 @@ public class SimplifyGeometryFunction implements GeometryOperator {
 
     @Override
     public Geometry apply(Geometry geometry) {
-        if (geometry == null) {
-            return null;
+        if (geometry == null || geometry.isEmpty()) {
+            return geometry;
         }
 
-        LOGGER.debug("simplifying geometry: {}", geometry);
+        LOGGER.trace("simplifying geometry: {}\n {} coordinates, isValid? {}",
+                geometry,
+                geometry.getCoordinates().length,
+                geometry.isValid());
 
         Geometry simplifiedGeometry;
         if (distanceTolerance.isPresent()) {
@@ -59,11 +62,12 @@ public class SimplifyGeometryFunction implements GeometryOperator {
             simplifiedGeometry = new TopologyPreservingSimplifier(geometry).getResultGeometry();
         }
 
-        LOGGER.debug("old coord count={} new coord count={}",
-                geometry.getCoordinates().length,
-                simplifiedGeometry.getCoordinates().length);
+        LOGGER.trace("simplified geometry: {}\n {} coordinates, isValid? {}",
+                simplifiedGeometry,
+                simplifiedGeometry.getCoordinates().length,
+                simplifiedGeometry.isValid());
 
-        return simplifiedGeometry;
+        return simplifiedGeometry.isValid() ? simplifiedGeometry : geometry;
     }
 
     @Override

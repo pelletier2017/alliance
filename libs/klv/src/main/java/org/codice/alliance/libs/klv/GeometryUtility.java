@@ -79,6 +79,8 @@ public class GeometryUtility {
                 .map(preUnionGeometryOperator)
                 .reduce(Geometry::union)
                 .map(postUnionGeometryOperator)
+                .map(geo -> !geo.isValid() ? geo.convexHull() : geo)
+                .filter(Geometry::isValid)
                 .map(wktWriter::write);
     }
 

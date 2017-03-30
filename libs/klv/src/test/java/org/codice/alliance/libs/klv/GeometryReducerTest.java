@@ -26,20 +26,19 @@ import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 
-public class ConvertSubpolygonsToEnvelopesTest {
+public class GeometryReducerTest {
 
     private static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory();
-
 
     @Test
     public void testNullSubpolygon() throws ParseException {
 
         Geometry geometry = null;
 
-        ConvertSubpolygonsToEnvelopes convertSubpolygonsToEnvelopes =
-                new ConvertSubpolygonsToEnvelopes();
+        GeometryReducer reducer =
+                new GeometryReducer();
 
-        Geometry actual = convertSubpolygonsToEnvelopes.apply(geometry);
+        Geometry actual = reducer.apply(geometry);
 
         assertThat(actual, nullValue());
     }
@@ -49,10 +48,10 @@ public class ConvertSubpolygonsToEnvelopesTest {
 
         Geometry geometry = GEOMETRY_FACTORY.createMultiPolygon(null);
 
-        ConvertSubpolygonsToEnvelopes convertSubpolygonsToEnvelopes =
-                new ConvertSubpolygonsToEnvelopes();
+        GeometryReducer reducer =
+                new GeometryReducer();
 
-        Geometry actual = convertSubpolygonsToEnvelopes.apply(geometry);
+        Geometry actual = reducer.apply(geometry);
 
         assertThat(actual.isEmpty(), is(true));
     }
@@ -66,10 +65,10 @@ public class ConvertSubpolygonsToEnvelopesTest {
 
         Geometry geometry = wktReader.read(wkt);
 
-        ConvertSubpolygonsToEnvelopes convertSubpolygonsToEnvelopes =
-                new ConvertSubpolygonsToEnvelopes();
+        GeometryReducer reducer =
+                new GeometryReducer();
 
-        Geometry actual = convertSubpolygonsToEnvelopes.apply(geometry);
+        Geometry actual = reducer.apply(geometry);
 
         assertThat(actual, is(geometry));
 
@@ -85,13 +84,12 @@ public class ConvertSubpolygonsToEnvelopesTest {
 
         Geometry geometry = wktReader.read(wkt);
 
-        ConvertSubpolygonsToEnvelopes convertSubpolygonsToEnvelopes =
-                new ConvertSubpolygonsToEnvelopes();
+        GeometryReducer reducer =
+                new GeometryReducer();
 
-        Geometry actual = convertSubpolygonsToEnvelopes.apply(geometry);
+        Geometry actual = reducer.apply(geometry);
 
-        Geometry expected = wktReader.read(
-                "MULTIPOLYGON (((0 0, 0 20, 20 20, 20 0, 0 0)), ((0 40, 0 60, 20 60, 20 40, 0 40)))");
+        Geometry expected = wktReader.read(wkt);
 
         assertThat(actual, is(expected));
 
@@ -102,12 +100,12 @@ public class ConvertSubpolygonsToEnvelopesTest {
 
         GeometryOperator.Visitor visitor = mock(GeometryOperator.Visitor.class);
 
-        ConvertSubpolygonsToEnvelopes convertSubpolygonsToEnvelopes =
-                new ConvertSubpolygonsToEnvelopes();
+        GeometryReducer reducer =
+                new GeometryReducer();
 
-        convertSubpolygonsToEnvelopes.accept(visitor);
+        reducer.accept(visitor);
 
-        verify(visitor).visit(convertSubpolygonsToEnvelopes);
+        verify(visitor).visit(reducer);
 
     }
 

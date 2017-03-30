@@ -15,6 +15,9 @@ package org.codice.alliance.libs.klv;
 
 import java.util.stream.IntStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.vividsolutions.jts.geom.Geometry;
 
 /**
@@ -22,6 +25,9 @@ import com.vividsolutions.jts.geom.Geometry;
  * geometry, then return the original geometry.
  */
 public class ConvertSubpolygonsToEnvelopes implements GeometryOperator {
+    private static final Logger LOGGER =
+            LoggerFactory.getLogger(ConvertSubpolygonsToEnvelopes.class);
+
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);
@@ -30,14 +36,22 @@ public class ConvertSubpolygonsToEnvelopes implements GeometryOperator {
     @Override
     public Geometry apply(Geometry geometry) {
 
-        if (geometry.getNumGeometries() == 1) {
+        if (geometry == null || geometry.getNumGeometries() <= 1) {
             return geometry;
         }
 
-        return IntStream.range(0, geometry.getNumGeometries())
+        LOGGER.trace("Converting geometry: {}", geometry);
+
+        Geometry envelopePolygons = IntStream.range(0, geometry.getNumGeometries())
                 .mapToObj(geometry::getGeometryN)
                 .map(Geometry::getEnvelope)
                 .reduce(Geometry::union)
                 .orElse(geometry);
+
+        LOGGER.trace("Converted geometry: {}\n isValid? {}",
+                envelopePolygons,
+                envelopePolygons.isValid());
+
+        return envelopePolygons.isValid() ? envelopePolygons : geometry;
     }
 }

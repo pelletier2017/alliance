@@ -151,6 +151,28 @@ public class GeometryUtilityTest {
     }
 
     @Test
+    public void testUnionWithInvalidGeo() throws ParseException {
+        String polygonWithHole =
+                "POLYGON ((-2.009211 51.199649, -1.99911 51.231578, -1.915058 51.240884, "
+                        + "-1.9201379049078626 51.228738313629776, -1.895395 51.226235, "
+                        + "-1.9781007533907866 51.196335611502384, -2.009211 51.199649), "
+                        + "(-1.9880383632176948 51.194513502505224, -1.9848251778950785 "
+                        + "51.19299587819516, -1.9838038434104859 51.1939685777043, "
+                        + "-1.9880383632176948 51.194513502505224))";
+        Attribute attribute = new AttributeImpl(FIELD, Arrays.asList(polygonWithHole));
+
+        Optional<String> optionalWkt = GeometryUtility.createUnionOfGeometryAttribute(wktReader,
+                wktWriter,
+                attribute);
+
+        Geometry actual = wktReader.read(optionalWkt.get())
+                .norm();
+
+        assertThat(actual.isValid(), is(true));
+
+    }
+
+    @Test
     public void testAttributeToLineString() {
 
         Attribute attribute = new AttributeImpl(FIELD,
