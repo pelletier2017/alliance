@@ -17,7 +17,7 @@
     <parent>
         <artifactId>nsili</artifactId>
         <groupId>org.codice.alliance.nsili</groupId>
-        <version>0.2.3</version>
+        <version>0.2.4-SNAPSHOT</version>
     </parent>
 
     <artifactId>catalog-nsili-sourcestoquery-ui</artifactId>
