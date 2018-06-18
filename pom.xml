@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.codice</groupId>
     <artifactId>alliance</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>Alliance</name>
     <description>Codice Alliance</description>
@@ -37,10 +37,10 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <ddf.version>2.12.0</ddf.version>
         <ddf.support.version>2.3.9</ddf.support.version>
-        <ddf.scm.connection.url/>
-        <snapshots.repository.url/>
-        <reports.repository.url/>
-        <releases.repository.url/>
+        <ddf.scm.connection.url />
+        <snapshots.repository.url />
+        <reports.repository.url />
+        <releases.repository.url />
         <!-- The CXF version of Alliance should match the DDF Platform version
              Keep this in sync -->
         <cxf.version>3.1.11</cxf.version>
@@ -132,7 +132,7 @@
         <url>https://github.com/codice/alliance</url>
         <connection>scm:git:https://github.com/codice/alliance.git</connection>
         <developerConnection>scm:git:https://github.com/codice/alliance.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>alliance-1.0.0</tag>
     </scm>
     <dependencyManagement>
         <dependencies>
