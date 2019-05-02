@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.codice.alliance.nsili</groupId>
         <artifactId>nsili</artifactId>
-        <version>1.2.0.1342</version>
+        <version>1.2.1343-SNAPSHOT</version>
     </parent>
 
     <artifactId>catalog-nsili-common</artifactId>
