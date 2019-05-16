@@ -16,7 +16,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.codice</groupId>
     <artifactId>alliance</artifactId>
-    <version>1.2.1344-SNAPSHOT</version>
+    <version>1.2.0.1344</version>
     <packaging>pom</packaging>
     <name>Alliance</name>
     <description>Codice Alliance</description>
@@ -184,7 +184,7 @@
         <url>https://github.com/codice/alliance</url>
         <connection>scm:git:https://github.com/codice/alliance.git</connection>
         <developerConnection>scm:git:https://github.com/codice/alliance.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>13.4.4</tag>
     </scm>
     <dependencyManagement>
         <dependencies>
