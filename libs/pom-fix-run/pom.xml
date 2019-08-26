@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.codice.alliance</groupId>
         <artifactId>libs</artifactId>
-        <version>1.2.0.13410</version>
+        <version>1.2.13411-SNAPSHOT</version>
     </parent>
     <artifactId>pom-fix-run</artifactId>
     <packaging>pom</packaging>
