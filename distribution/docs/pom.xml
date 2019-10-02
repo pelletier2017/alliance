@@ -159,6 +159,16 @@
                                     <classifier>doc-templates</classifier>
                                     <type>zip</type>
                                     <overWrite>false</overWrite>
+                                    <outputDirectory>${project.build.directory}/templates</outputDirectory>
+                                    <includes>**</includes>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>ddf</groupId>
+                                    <version>${ddf.version}</version>
+                                    <artifactId>docs</artifactId>
+                                    <classifier>doc-templates</classifier>
+                                    <type>zip</type>
+                                    <overWrite>false</overWrite>
                                     <outputDirectory>${project.build.directory}/pre-build-${project.version}/upstream-templates-${project.version}</outputDirectory>
                                     <includes>**</includes>
                                 </artifactItem>
