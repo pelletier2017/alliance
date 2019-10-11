@@ -18,7 +18,7 @@
     <parent>
         <artifactId>imaging</artifactId>
         <groupId>org.codice.alliance.imaging</groupId>
-        <version>1.2.0.13413</version>
+        <version>1.2.13414-SNAPSHOT</version>
     </parent>
 
     <artifactId>imaging-service-api</artifactId>
