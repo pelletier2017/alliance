@@ -17,7 +17,7 @@
     <parent>
         <artifactId>imaging</artifactId>
         <groupId>org.codice.alliance.imaging</groupId>
-        <version>1.2.0.13414</version>
+        <version>1.2.13415-SNAPSHOT</version>
     </parent>
     <artifactId>imaging-transformer-nitf</artifactId>
     <packaging>bundle</packaging>
