@@ -106,7 +106,7 @@
         <dependency>
             <groupId>ddf.distribution</groupId>
             <artifactId>sdk-app</artifactId>
-            <version>${ddf.version}</version>
+            <version>${ddf-sdk.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
         </dependency>
