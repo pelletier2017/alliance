@@ -16,7 +16,7 @@
     <parent>
         <groupId>org.codice.alliance</groupId>
         <artifactId>libs</artifactId>
-        <version>1.2.0.13417</version>
+        <version>1.2.13418-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

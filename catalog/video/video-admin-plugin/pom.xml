@@ -17,7 +17,7 @@
     <parent>
         <artifactId>video</artifactId>
         <groupId>org.codice.alliance.video</groupId>
-        <version>1.2.0.13417</version>
+        <version>1.2.13418-SNAPSHOT</version>
     </parent>
     <artifactId>video-admin-plugin</artifactId>
     <name>Alliance :: Video :: UI Plugin</name>
