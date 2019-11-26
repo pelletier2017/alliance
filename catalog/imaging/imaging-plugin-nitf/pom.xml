@@ -16,7 +16,7 @@
     <parent>
         <artifactId>imaging</artifactId>
         <groupId>org.codice.alliance.imaging</groupId>
-        <version>1.2.13417-SNAPSHOT</version>
+        <version>1.2.0.13417</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
