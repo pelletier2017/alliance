@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.codice</groupId>
         <artifactId>alliance</artifactId>
-        <version>1.2.13418-SNAPSHOT</version>
+        <version>1.2.0.13418</version>
     </parent>
 
     <artifactId>distribution</artifactId>
