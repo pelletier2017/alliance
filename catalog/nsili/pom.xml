@@ -16,7 +16,7 @@
     <parent>
         <groupId>org.codice.alliance</groupId>
         <artifactId>catalog</artifactId>
-        <version>1.2.13419-SNAPSHOT</version>
+        <version>1.2.0.13419</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>nsili</artifactId>
