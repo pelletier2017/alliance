@@ -92,7 +92,7 @@
         <jquery.version>1.11.0</jquery.version>
         <jquery-ui.version>1.10.4</jquery-ui.version>
         <marionette.version>2.4.5</marionette.version>
-        <moment.version>2.20.1</moment.version>
+        <moment.version>2.20.2</moment.version>
         <node.version>v8.9.4</node.version>
         <require-css.version>0.1.10</require-css.version>
         <requirejs-plugins.version>1.0.2</requirejs-plugins.version>
