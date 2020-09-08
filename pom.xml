@@ -52,7 +52,7 @@
         <!--default url substitutions: preface with a \ to disable automatic hyperlinking-->
         <public_url>http://{FQDN}:{PORT}</public_url>
         <secure_url>https://{FQDN}:{PORT}</secure_url>
-        <home_directory>&lt;ALLIANCE_HOME&gt;</home_directory>
+        <home_directory>&lt;ALLIANCE_HOME></home_directory>
         <!--Needed for documentation formatting-->
         <at-symbol>@</at-symbol>
         <variable-prefix>${</variable-prefix>
@@ -172,7 +172,7 @@
         <jts.version>1.16.0</jts.version>
         <karaf.version>4.2.6</karaf.version>
         <la4j.version>0.6.0</la4j.version>
-        <log4j.version>2.11.0</log4j.version>
+        <log4j.version>2.13.2</log4j.version>
         <mariadb.version>2.4.1</mariadb.version>
         <!-- Mina version is not the latest version due to Apache FTPServer 1.0.6 not supporting newer releases properly -->
         <mina.version>2.0.6</mina.version>
@@ -186,7 +186,7 @@
         <usng4j.version>0.1</usng4j.version>
         <xstream.version>1.4.9</xstream.version>
         <!-- Command line argument properties for the maven-surefire-plugin -->
-        <surefire.argline.append />
+        <surefire.argline.append/>
         <surefire.argline>${jacoco.argline} ${surefire.argline.append} -Xmx1024m -XX:MaxPermSize=256m -Djava.awt.headless=true -noverify -Duser.timezone=UTC -Dddf.version=${ddf.version}</surefire.argline>
 
         <fabric8.docker.plugin.version>0.33.0</fabric8.docker.plugin.version>
