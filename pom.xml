@@ -52,7 +52,7 @@
         <!--default url substitutions: preface with a \ to disable automatic hyperlinking-->
         <public_url>http://{FQDN}:{PORT}</public_url>
         <secure_url>https://{FQDN}:{PORT}</secure_url>
-        <home_directory>&lt;ALLIANCE_HOME&gt;</home_directory>
+        <home_directory>&lt;ALLIANCE_HOME></home_directory>
         <!--Needed for documentation formatting-->
         <at-symbol>@</at-symbol>
         <variable-prefix>${</variable-prefix>
@@ -88,7 +88,7 @@
         <httpcore.version>4.4.10</httpcore.version>
         <icanhandlebarz.version>0.1</icanhandlebarz.version>
         <iframe-resizer.version>2.6.2</iframe-resizer.version>
-        <jquery.version>1.11.0</jquery.version>
+        <jquery.version>3.5.0</jquery.version>
         <jquery-ui.version>1.10.4</jquery-ui.version>
         <marionette.version>2.4.5</marionette.version>
         <moment.version>2.20.1</moment.version>
@@ -186,7 +186,7 @@
         <usng4j.version>0.1</usng4j.version>
         <xstream.version>1.4.9</xstream.version>
         <!-- Command line argument properties for the maven-surefire-plugin -->
-        <surefire.argline.append />
+        <surefire.argline.append/>
         <surefire.argline>${jacoco.argline} ${surefire.argline.append} -Xmx1024m -XX:MaxPermSize=256m -Djava.awt.headless=true -noverify -Duser.timezone=UTC -Dddf.version=${ddf.version}</surefire.argline>
 
         <fabric8.docker.plugin.version>0.33.0</fabric8.docker.plugin.version>
