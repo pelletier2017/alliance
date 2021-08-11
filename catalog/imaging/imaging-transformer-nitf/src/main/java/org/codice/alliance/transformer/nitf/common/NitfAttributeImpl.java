@@ -59,6 +59,7 @@ public class NitfAttributeImpl<T> implements NitfAttribute<T> {
                 false, /* tokenized */
                 true, /* multivalued */
                 attributeType));
+    System.out.println(String.format("%s,%s,%s,", this.getClass().getSimpleName(),extNitfName, shortName));
   }
 
   protected NitfAttributeImpl(
@@ -92,6 +93,11 @@ public class NitfAttributeImpl<T> implements NitfAttribute<T> {
     if (StringUtils.isNotEmpty(extNitfName)) {
       this.attributeDescriptors.add(
           ExtNitfUtility.createDuplicateDescriptorAndRename(extNitfName, attributeDescriptor));
+    }
+//    System.out.println(String.format("%s,%s,%s,%s", this.getClass().getSimpleName(), extNitfName, shortName, longName));
+
+    for (AttributeDescriptor descriptor : attributeDescriptors) {
+      System.out.println(String.format("%s,%s,%s,%s", this.getClass().getSimpleName(), descriptor.getName(), shortName, longName));
     }
   }
 

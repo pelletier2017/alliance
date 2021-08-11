@@ -149,6 +149,9 @@ public enum SymbolAttribute implements NitfAttribute<SymbolSegment> {
     this.shortName = sName;
     this.longName = lName;
     this.attributeDescriptors = createAttributeDescriptors(attributeTypes);
+    for (AttributeDescriptor attributeDescriptor : attributeDescriptors) {
+      System.out.println(String.format("%s,%s,%s,%s", this.getClass().getSimpleName(), attributeDescriptor.getName(), shortName, longName));
+    }
   }
 
   /** {@inheritDoc} */

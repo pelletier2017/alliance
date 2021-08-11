@@ -136,6 +136,9 @@ public enum TextAttribute implements NitfAttribute<TextSegment> {
     this.shortName = sName;
     this.accessorFunction = accessor;
     this.attributeDescriptors = createAttributeDescriptors(attributeTypes);
+    for (AttributeDescriptor attributeDescriptor : attributeDescriptors) {
+      System.out.println(String.format("%s,%s,%s,%s", this.getClass().getSimpleName(), attributeDescriptor.getName(), shortName, longName));
+    }
   }
 
   /** {@inheritDoc} */
